@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
@@ -82,4 +82,369 @@ return {
       )
     end,
   },
+
+  {
+    "EdenEast/nightfox.nvim",
+    config = function()
+      require("nightfox").setup {}
+    end,
+  },
+
+  {
+    "kaicataldo/material.vim",
+  },
+
+  {
+    "https://github.com/ntpeters/vim-better-whitespace",
+    lazy = false,
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+
+  {
+    "github/copilot.vim",
+    lazy = false,
+  },
+
+
+  {
+    "https://github.com/tomtom/tcomment_vim",
+    lazy = false,
+  },
+
+  {
+    "rhysd/conflict-marker.vim",
+    lazy = false,
+  },
+
+  {
+    "APZelos/blamer.nvim",
+    lazy = false,
+  },
+
+  {
+    "stevearc/aerial.nvim",
+    lazy = false,
+  },
+
+  {
+    "thinca/vim-partedit",
+    lazy = false,
+  },
+
+  {
+    "nordtheme/vim",
+    lazy = false,
+  },
+
+  {
+    "NLKNguyen/papercolor-theme",
+    lazy = false,
+  },
+
+  {
+    "sainnhe/sonokai",
+    lazy = false,
+  },
+
+  {
+    "Frederick888/vim-prettier",
+    branch = "prettier-3-0",
+    lazy = false,
+  },
+
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+  },
+
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false,
+  },
+
+  {
+    "JoosepAlviste/palenightfall.nvim",
+    lazy = false,
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+  },
+
+  {
+    "romgrk/barbar.nvim",
+    config = function()
+      require("barbar").setup({
+        maximum_padding = 1,
+        maximum_length = 5,
+        icons = {
+          buffer_index = true,
+          gitsigns = {
+            added = {enabled = true, icon = '+'},
+            changed = {enabled = true, icon = '~'},
+            deleted = {enabled = true, icon = '-'},
+          },
+          diagnostics = {
+            [vim.diagnostic.severity.ERROR] = {enabled = true, icon = ' ' },
+            [vim.diagnostic.severity.WARN] = {enabled = true, icon = ' ' },
+            [vim.diagnostic.severity.INFO] = {enabled = true },
+            [vim.diagnostic.severity.HINT] = {enabled = true },
+          },
+          -- preset = 'powerline',
+          -- separator = { left = '', right = '' },
+          separator_at_end = false,
+        },
+      })
+    end,
+    lazy = false,
+  },
+
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   config =function()
+  --     require('bufferline').setup({
+  --       highlights = require("catppuccin.groups.integrations.bufferline").get({
+  --         styles = { 'regurar', 'bold' },
+  --         custom = {
+  --           all = {
+  --             -- fill = { bg = 'blue'},
+  --           }
+  --         }
+  --       }),
+  --       options = {
+  --         numbers = "ordinal",
+  --         indicator = {
+  --           style = 'underline',
+  --         },
+  --         diagnostics = "nvim_lsp",
+  --         separator_style = 'slant',
+  --       },
+  --     })
+  --   end,
+  --   after = "catppuccin",
+  --   lazy = false,
+  -- },
+
+  {
+    "Bekaboo/dropbar.nvim",
+    lazy = false,
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          },
+          hover = {
+            enabled = false,
+          },
+          signature = {
+            enabled = false,
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = false, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
+        },
+        cmdline = {
+          format = {
+            search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+          },
+        },
+        views = {
+          notify = {
+            backend = "notify",
+            merge = true,
+            replace = true,
+          }
+        },
+      })
+    end,
+  },
+
+  {
+    "SmiteshP/nvim-navic",
+    lazy = false,
+  },
+
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  },
+
+  -- {
+  --   "rebelot/heirline.nvim",
+  --   opts = function(_, opts)
+  --     local status = require "astronvim.utils.status"
+  --     return {
+  --       opts = {
+  --         disable_winbar_cb = function(args)
+  --           return not require("astronvim.utils.buffer").is_valid(args.buf)
+  --             or status.condition.buffer_matches({
+  --               buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
+  --               filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+  --             }, args.buf)
+  --         end,
+  --       },
+  --       statusline = { -- statusline
+  --         hl = { fg = "fg", bg = "bg" },
+  --         status.component.mode(),
+  --         status.component.git_branch(),
+  --         status.component.file_info { filetype = {}, filename = false, file_modified = false },
+  --         status.component.git_diff(),
+  --         status.component.diagnostics(),
+  --         status.component.fill(),
+  --         status.component.cmd_info(),
+  --         status.component.fill(),
+  --         status.component.lsp(),
+  --         status.component.treesitter(),
+  --         status.component.nav(),
+  --         status.component.mode { surround = { separator = "right" } },
+  --       },
+  --     }
+  --   end,
+  -- },
+
+  {
+    "nvimdev/lspsaga.nvim",
+    lazy = false,
+    config = function()
+      require('lspsaga').setup({
+        symbol_in_winbar = {
+          enable = true,
+        },
+        finder = {
+          max_height = 0.6,
+          default = 'tyd+ref+imp+def',
+          keys = {
+            toggle_or_open = '<CR>',
+            vsplit = 'v',
+            split = 's',
+            tabnew = 't',
+            tab = 'T',
+            quit = 'q',
+            close = '<Esc>',
+          },
+          methods = {
+            tyd = 'textDocument/typeDefinition',
+          }
+        },
+        ui = {
+          code_action = ''
+        },
+        show_outline = {
+          auto_preview = true,
+        },
+        outline = {
+          win_position = 'left',
+          layout = 'float',
+          max_height = 0.4,
+        },
+      })
+    end,
+  },
+
+  {
+    "ibhagwan/fzf-lua",
+    lazy = false,
+  },
+
+  {
+    "projekt0n/github-nvim-theme",
+    lazy = false,
+  },
+
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    config = function()
+      require('catppuccin').setup({
+        flavour = "macchiato",
+        transparent_background = true,
+        integrations = {
+          barbar = false,
+          illuminate = {
+            enabled = true,
+            lsp = false,
+          },
+        },
+      })
+    end,
+  },
+
+  {
+    "RRethy/vim-illuminate",
+    lazy = false,
+  },
+
+  {
+    "equalsraf/neovim-gui-shim",
+    lazy = false,
+  }
+
+  -- {
+  --   "ldelossa/nvim-ide",
+  --   lazy = true,
+  --   -- event = "BufRead",
+  --   config = function()
+  --     local explorer = require("ide.components.explorer")
+  --
+  --     require('ide').setup({
+  --       icon_set = 'nerd',
+  --       panels = {},
+  --       panel_groups = {
+  --         explorer = {
+  --           explorer.Name,
+  --         },
+  --         terminal = {},
+  --         git = {},
+  --       },
+  --       workspaces = {},
+  --     })
+  --   end
+  -- }
+
+  -- {
+  --   "vim-airline/vim-airline",
+  --   config = function()
+  --     vim.g.airline_theme = "catppuccin"
+  --     vim.g.airline_left_sep = ''
+  --     vim.g.airline_right_sep = ''
+  --     vim.g.airline_left_alt_sep = ''
+  --     vim.g.airline_right_alt_sep = ''
+  --     vim.g.airline_symbols.branch = ''
+  --
+  --   end,
+  --   lazy = false,
+  -- }
 }

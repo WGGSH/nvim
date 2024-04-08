@@ -11,6 +11,14 @@ return {
       "lua",
       "vim",
       -- add more arguments for adding more treesitter parsers
+      "vue",
+      "javascript",
+      "typescript",
+      "bash",
+      "perl",
+      "css",
+      "scss",
+      "json",
     })
   end,
 }
