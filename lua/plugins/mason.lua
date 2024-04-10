@@ -18,6 +18,7 @@ return {
         "stylelint_lsp",
         "tsserver",
         "jsonls",
+        "perlnavigator",
       })
     end,
   },
