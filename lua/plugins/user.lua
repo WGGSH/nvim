@@ -85,9 +85,7 @@ return {
 
   {
     "EdenEast/nightfox.nvim",
-    config = function()
-      require("nightfox").setup {}
-    end,
+    config = function() require("nightfox").setup {} end,
   },
 
   {
@@ -103,9 +101,7 @@ return {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   },
 
@@ -113,7 +109,6 @@ return {
     "github/copilot.vim",
     lazy = false,
   },
-
 
   {
     "https://github.com/tomtom/tcomment_vim",
@@ -184,27 +179,27 @@ return {
   {
     "romgrk/barbar.nvim",
     config = function()
-      require("barbar").setup({
+      require("barbar").setup {
         maximum_padding = 1,
         maximum_length = 5,
         icons = {
           buffer_index = true,
           gitsigns = {
-            added = {enabled = true, icon = '+'},
-            changed = {enabled = true, icon = '~'},
-            deleted = {enabled = true, icon = '-'},
+            added = { enabled = true, icon = "+" },
+            changed = { enabled = true, icon = "~" },
+            deleted = { enabled = true, icon = "-" },
           },
           diagnostics = {
-            [vim.diagnostic.severity.ERROR] = {enabled = true, icon = ' ' },
-            [vim.diagnostic.severity.WARN] = {enabled = true, icon = ' ' },
-            [vim.diagnostic.severity.INFO] = {enabled = true },
-            [vim.diagnostic.severity.HINT] = {enabled = true },
+            [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
+            [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
+            [vim.diagnostic.severity.INFO] = { enabled = true },
+            [vim.diagnostic.severity.HINT] = { enabled = true },
           },
           -- preset = 'powerline',
           -- separator = { left = '', right = '' },
           separator_at_end = false,
         },
-      })
+      }
     end,
     lazy = false,
   },
@@ -253,7 +248,7 @@ return {
       "rcarriga/nvim-notify",
     },
     config = function()
-      require("noice").setup({
+      require("noice").setup {
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
@@ -286,9 +281,9 @@ return {
             backend = "notify",
             merge = true,
             replace = true,
-          }
+          },
         },
-      })
+      }
     end,
   },
 
@@ -339,38 +334,38 @@ return {
     "nvimdev/lspsaga.nvim",
     lazy = false,
     config = function()
-      require('lspsaga').setup({
+      require("lspsaga").setup {
         symbol_in_winbar = {
           enable = true,
         },
         finder = {
           max_height = 0.6,
-          default = 'tyd+ref+imp+def',
+          default = "tyd+ref+imp+def",
           keys = {
-            toggle_or_open = '<CR>',
-            vsplit = 'v',
-            split = 's',
-            tabnew = 't',
-            tab = 'T',
-            quit = 'q',
-            close = '<Esc>',
+            toggle_or_open = "<CR>",
+            vsplit = "v",
+            split = "s",
+            tabnew = "t",
+            tab = "T",
+            quit = "q",
+            close = "<Esc>",
           },
           methods = {
-            tyd = 'textDocument/typeDefinition',
-          }
+            tyd = "textDocument/typeDefinition",
+          },
         },
         ui = {
-          code_action = ''
+          code_action = "",
         },
         show_outline = {
           auto_preview = true,
         },
         outline = {
-          win_position = 'left',
-          layout = 'float',
+          win_position = "left",
+          layout = "float",
           max_height = 0.4,
         },
-      })
+      }
     end,
   },
 
@@ -388,7 +383,7 @@ return {
     "catppuccin/nvim",
     lazy = false,
     config = function()
-      require('catppuccin').setup({
+      require("catppuccin").setup {
         flavour = "macchiato",
         transparent_background = true,
         integrations = {
@@ -398,7 +393,7 @@ return {
             lsp = false,
           },
         },
-      })
+      }
     end,
   },
 
@@ -410,7 +405,7 @@ return {
   {
     "equalsraf/neovim-gui-shim",
     lazy = false,
-  }
+  },
 
   -- {
   --   "ldelossa/nvim-ide",
