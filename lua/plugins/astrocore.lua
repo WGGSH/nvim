@@ -38,7 +38,7 @@ return {
         incsearch = true, -- sets vim.opt.incsearch
         wildignorecase = true, -- sets vim.opt.wildignorecase
 
-        foldcolumn = '0',
+        foldcolumn = "0",
 
         showtabline = 1,
       },
@@ -54,18 +54,18 @@ return {
         icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
         ui_notifications_enabled = true, -- disable notifications when toggling UI elements
         -- custom option
-        material_theme_style = 'darker',
-        tcomment_mapleader1="<C-\\>",
+        material_theme_style = "darker",
+        tcomment_mapleader1 = "<C-\\>",
 
-        conflict_marker_highlight_group = '',
-        conflict_marker_begin = '^<<<<<<< .*$',
-        conflict_marker_end   = '^>>>>>>> .*$',
+        conflict_marker_highlight_group = "",
+        conflict_marker_begin = "^<<<<<<< .*$",
+        conflict_marker_end = "^>>>>>>> .*$",
 
         blamer_enabled = 1,
         blamer_delay = 200,
-        blamer_prefix = '      ',
-        blamer_template = '<committer-time> - <author> : <summary> : <commit-short>',
-        blamer_date_format = '%y-%m/%d',
+        blamer_prefix = "      ",
+        blamer_template = "<committer-time> - <author> : <summary> : <commit-short>",
+        blamer_date_format = "%y-%m/%d",
         blamer_show_in_visual_modes = 0,
       },
     },
@@ -96,7 +96,7 @@ return {
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
 
         -- custom option
-        ["<leader>s"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        ["<leader>s"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
         ["<leader>w"] = { ":bw<CR>" },
         ["<leader>q"] = { ":q<CR>" },
         ["<leader>-"] = { ":sp<CR>" },
