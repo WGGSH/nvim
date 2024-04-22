@@ -30,3 +30,5 @@ vim.cmd "augroup END"
 colorscheme = "catppuccin"
 vim.cmd("autocmd colorscheme " .. colorscheme .. " highlight CursorLine gui=underline guibg=none guisp=none")
 vim.cmd("colorscheme " .. colorscheme)
+
+require("astrolsp.toggles").buffer_autoformat()
