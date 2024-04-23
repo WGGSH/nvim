@@ -19,6 +19,8 @@ return {
       "css",
       "scss",
       "json",
+      "sql",
+      "gitcommit",
     })
   end,
 }
