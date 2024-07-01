@@ -103,6 +103,8 @@ return {
         ["<leader>z"] = { ":vs<CR>" },
         ["<leader><leader>d"] = { "<C-w>h" },
         ["<leader><leader>n"] = { "<C-w>l" },
+        ["<leader><leader>h"] = { "<C-w>j" },
+        ["<leader><leader>t"] = { "<C-w>k" },
         ["<leader>h"] = { "<Cmd>BufferPrevious<CR>" },
         ["<leader>t"] = { "<Cmd>BufferNext<CR>" },
         ["<leader>n"] = { "" },
