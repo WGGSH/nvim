@@ -27,6 +27,11 @@ vim.cmd "autocmd FileType perl setlocal tabstop=4 softtabstop=4 shiftwidth=4"
 vim.cmd "augroup END"
 
 -- underline
-colorscheme = "catppuccin"
-vim.cmd("autocmd colorscheme " .. colorscheme .. " highlight CursorLine gui=underline guibg=none guisp=none")
+-- colorscheme = "catppuccin"
+-- vim.cmd("autocmd colorscheme " .. colorscheme .. " highlight CursorLine gui=underline guibg=none guisp=none")
+-- vim.cmd("colorscheme " .. colorscheme)
+
+-- underline
+colorscheme = "monokai-pro"
+vim.cmd("autocmd colorscheme " .. colorscheme .. " highlight CursorLine gui=underline guibg=none guisp=none guifg=none")
 vim.cmd("colorscheme " .. colorscheme)
