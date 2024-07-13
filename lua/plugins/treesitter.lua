@@ -21,6 +21,7 @@ return {
       "json",
       "sql",
       "gitcommit",
+      "cpp",
     })
   end,
 }

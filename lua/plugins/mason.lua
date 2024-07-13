@@ -19,6 +19,7 @@ return {
         "tsserver",
         "jsonls",
         "perlnavigator",
+        "clangd"
       })
     end,
   },
