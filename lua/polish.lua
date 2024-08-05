@@ -35,3 +35,11 @@ vim.cmd "augroup END"
 colorscheme = "monokai-pro"
 vim.cmd("autocmd colorscheme " .. colorscheme .. " highlight CursorLine gui=underline guibg=none guisp=none guifg=none")
 vim.cmd("colorscheme " .. colorscheme)
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'perl',
+  callback = function()
+    vim.opt_local.iskeyword:remove(':')
+    vim.opt_local.iskeyword:remove('#')
+  end
+})
