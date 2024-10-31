@@ -17,7 +17,8 @@ return {
         "vuels",
         "eslint",
         "stylelint_lsp",
-        "tsserver",
+        -- "tsserver",
+        "vtsls",
         "jsonls",
         "perlnavigator",
         "clangd"
