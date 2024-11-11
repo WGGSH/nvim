@@ -566,27 +566,4 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
-
-  -- LSP config
-  "AstroNvim/astrolsp",
-  opts = function(_, opts)
-    opts.config = require("astronvim.utils").extend_tbl(opts.config or {}, {
-      ts_ls = {
-        init_options = {
-          plugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-              languages = {"vue"}
-            }
-          }
-        },
-        filetypes = {"typescript", "javascript", "vue"},
-      },
-      volar = {
-        filetypes = {"typescript", "javascript", "vue"}
-      }
-    })
-    return opts
-  end,
 }

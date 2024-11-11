@@ -43,3 +43,25 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.iskeyword:remove('#')
   end
 })
+
+-- FIXME: 後で plugins 以下に移動したい
+local lspconfig = require('lspconfig')
+local mason_registry = require('mason-registry')
+
+-- Vue Language Serverのパスを取得
+local vue_ls_path = mason_registry.get_package('vue-language-server'):get_install_path()
+local vue_typescript_plugin_path = vue_ls_path .. '/node_modules/@vue/language-server'
+
+-- ts_lsの設定
+lspconfig.ts_ls.setup({
+  init_options = {
+    plugins = {
+      {
+        name = '@vue/typescript-plugin',
+        location = vue_typescript_plugin_path,
+        languages = {'vue'}
+      }
+    }
+  },
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue'},
+})
