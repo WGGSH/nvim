@@ -128,6 +128,41 @@ return {
   {
     "stevearc/aerial.nvim",
     lazy = false,
+    config = function()
+      require("aerial").setup({
+        show_guides = true,
+        keymaps = {
+          ["h"] = false
+        },
+        filter_kind = {
+          -- "Class",
+          "Constructor",
+          "Enum",
+          "Function",
+          "Interface",
+          "Method",
+          "Module",
+          "Struct",
+          "Type",
+          "Field",
+          "Component",
+          "Variable",
+        },
+        backends = {
+          ["_"] = { "treesitter", "lsp" },
+          vue = { "treesitter", "lsp" },
+        },
+        show_symbol_details = true;
+        -- icons = {
+        --   group = {
+        --     ["class"] = " ",
+        --     ["function"] = " ",
+        --     ["method"] = " ",
+        --     ["variable"] = " ",
+        --   },
+        -- },
+      })
+    end
   },
 
   {
