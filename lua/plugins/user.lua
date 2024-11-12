@@ -510,8 +510,8 @@ return {
             underline_visible = false,
           },
           indent_blankline = {
-            context_highlight = "default", -- default | pro
-            context_start_underline = false,
+            context_highlight = "pro", -- default | pro
+            context_start_underline = true,
           },
         },
         override = function(c)
@@ -566,4 +566,12 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
+
+  {
+    "karb94/neoscroll.nvim",
+    lazy = false,
+    config = function ()
+      require('neoscroll').setup({})
+    end;
+  }
 }
