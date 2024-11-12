@@ -471,7 +471,7 @@ return {
     "loctvl842/monokai-pro.nvim",
     lazy = false,
     config = function()
-      require("monokai-pro").setup({
+      require("monokai-pro").setup {
         transparent_background = true,
         terminal_colors = true,
         devicons = true, -- highlight the icons of `nvim-web-devicons`
@@ -503,7 +503,7 @@ return {
           "nvim-tree",
           "neo-tree",
           "bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
-        },-- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
+        }, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
         plugins = {
           bufferline = {
             underline_selected = false,
@@ -519,11 +519,8 @@ return {
             NeoTreeFloatBorder = { fg = c.sideBar.foreground },
           }
         end,
-        overridePalette = function(filter)
-          return {
-          }
-        end
-      })
+        overridePalette = function(filter) return {} end,
+      }
     end,
   },
 
@@ -531,7 +528,7 @@ return {
     "rcarriga/nvim-notify",
     lazy = false,
     config = function()
-      require('notify').setup({
+      require("notify").setup {
         stages = "slide",
         timeout = 1500,
         -- background_colour = "#000000",
@@ -542,8 +539,8 @@ return {
         --   DEBUG = "",
         --   TRACE = "✎"
         -- },
-        top_down = false,  -- これを false にすると右下になります。
-      })
+        top_down = false, -- これを false にすると右下になります。
+      }
     end,
   },
 
@@ -562,7 +559,7 @@ return {
       window = {
         layout = "float",
         border = "rounded",
-      }
+      },
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
@@ -570,8 +567,38 @@ return {
   {
     "karb94/neoscroll.nvim",
     lazy = false,
-    config = function ()
-      require('neoscroll').setup({})
-    end;
-  }
+    config = function() require("neoscroll").setup {} end,
+  },
+
+  {
+    "shellRaining/hlchunk.nvim",
+    lazy = false,
+    config = function()
+      require("hlchunk").setup {
+        chunk = {
+          enable = true,
+          use_treesitter = true,
+
+          chars = {
+            horizontal_line = "─",
+            vertical_line = "│",
+            left_top = "┌",
+            left_bottom = "└",
+            right_arrow = "→",
+          },
+          -- style = "#00ffff",
+          duration = 0,
+          delay = 0,
+        },
+        indent = {
+          enable = true,
+          use_treesitter = true,
+        },
+        line_num = {
+          enable = true,
+          use_treesitter = true,
+        },
+      }
+    end,
+  },
 }
