@@ -3,6 +3,8 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
 
+local monokai_pro_pallete;
+
 ---@type LazySpec
 return {
 
@@ -550,8 +552,8 @@ return {
           },
         },
         override = function(c)
+          monokai_pro_pallete = c.base
           return {
-            NeoTreeFloatBorder = { fg = c.sideBar.foreground },
           }
         end,
         overridePalette = function(filter) return {} end,
@@ -563,9 +565,11 @@ return {
     "rcarriga/nvim-notify",
     lazy = false,
     config = function()
-      require("notify").setup {
+      require("notify").setup({
         stages = "slide",
         timeout = 1500,
+        level = 1,
+        background_colour = "NotifyWarnIcon",
         -- background_colour = "#000000",
         -- icons = {
         --   ERROR = "",
@@ -575,7 +579,7 @@ return {
         --   TRACE = "✎"
         -- },
         top_down = false, -- これを false にすると右下になります。
-      }
+      })
     end,
   },
 
@@ -622,6 +626,7 @@ return {
             right_arrow = "→",
           },
           -- style = "#00ffff",
+          style = monokai_pro_pallete.dimmed1,
           duration = 0,
           delay = 0,
         },
