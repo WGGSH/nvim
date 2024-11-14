@@ -32,9 +32,9 @@ vim.cmd "augroup END"
 -- vim.cmd("colorscheme " .. colorscheme)
 
 -- underline
-colorscheme = "monokai-pro"
-vim.cmd("autocmd colorscheme " .. colorscheme .. " highlight CursorLine gui=underline guibg=none guisp=none guifg=none")
-vim.cmd("colorscheme " .. colorscheme)
+-- colorscheme = "monokai-pro"
+-- vim.cmd("autocmd colorscheme " .. colorscheme .. " highlight CursorLine gui=underline guibg=none guisp=none guifg=none")
+-- vim.cmd("colorscheme " .. colorscheme)
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'perl',

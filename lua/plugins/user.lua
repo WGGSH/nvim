@@ -626,7 +626,7 @@ return {
             right_arrow = "→",
           },
           -- style = "#00ffff",
-          style = monokai_pro_pallete.dimmed1,
+          -- style = monokai_pro_pallete.dimmed1,
           duration = 0,
           delay = 0,
         },
@@ -648,5 +648,15 @@ return {
     config = function()
       require("scrollbar").setup()
     end
+  },
+
+  {
+    "famiu/bufdelete.nvim",
+    lazy = false,
+  },
+
+  {
+    "sainnhe/everforest",
+    lazy = false,
   }
 }
