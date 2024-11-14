@@ -17,9 +17,6 @@ vim.filetype.add {
   },
 }
 
--- copilot map
-vim.cmd 'imap <silent><script><expr> <C-H> copilot#Accept("\\<CR>")'
-
 -- perl のインデント幅
 vim.cmd "augroup MyFileTypeEvent"
 vim.cmd "autocmd!"

@@ -72,6 +72,18 @@ return {
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
+      i = {
+        ["<C-H>"] = {
+          function()
+            return vim.fn['copilot#Accept']("\n")
+          end,
+          desc = "Copilot accept suggestion",
+          expr = true,
+          silent = true,
+          script = true,
+          replace_keycodes = false,
+        },
+      },
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
