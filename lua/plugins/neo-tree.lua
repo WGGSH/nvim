@@ -2,7 +2,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = {
     window = {
-      position = "float",
+      position = "left",
       mappings = {
         D = "delete",
         d = "parent_or_close",
@@ -11,5 +11,13 @@ return {
         n = "child_or_open",
       },
     },
+    default_component_configs = {
+      indent = {
+        padding = 0,
+        indent_marker = "├─",
+        last_indent_marker = "└─",
+        -- highlight = "Normal",
+      }
+    }
   },
 }
