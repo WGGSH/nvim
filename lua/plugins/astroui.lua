@@ -23,6 +23,7 @@ return {
         ConflictMarkerTheirs = { bg = "#4085c2" },
         ConflictMarkerEnd = { bg = "#4085c2" },
         ConflictMarkerSeparator = { bg = "none" },
+        CursorLine = { underline = true, fg= "none", bg= "none" },
       },
       astrotheme = { -- a table of overrides/changes when applying the astrotheme theme
         -- Normal = { bg = "#000000" },

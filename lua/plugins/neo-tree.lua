@@ -14,9 +14,7 @@ return {
     default_component_configs = {
       indent = {
         padding = 0,
-        indent_marker = "├─",
         last_indent_marker = "└─",
-        -- highlight = "Normal",
       }
     }
   },
