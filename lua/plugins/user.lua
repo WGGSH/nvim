@@ -263,14 +263,9 @@ return {
   --       },
   --     })
   --   end,
-  --   after = "catppuccin",
+  --   -- after = "catppuccin",
   --   lazy = false,
   -- },
-
-  {
-    "Bekaboo/dropbar.nvim",
-    lazy = false,
-  },
 
   {
     "folke/noice.nvim",
@@ -643,11 +638,13 @@ return {
   },
 
   {
-    "petertriho/nvim-scrollbar",
-    lazy = false,
+    "dstein64/nvim-scrollview",
     config = function()
-      require("scrollbar").setup()
-    end
+      require("scrollview").setup {
+        excluded_filetypes = { "neo-tree" },
+      }
+    end,
+    lazy = false,
   },
 
   {
@@ -658,5 +655,5 @@ return {
   {
     "sainnhe/everforest",
     lazy = false,
-  }
+  },
 }

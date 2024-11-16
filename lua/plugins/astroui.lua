@@ -25,6 +25,13 @@ return {
         ConflictMarkerSeparator = { bg = "none" },
         CursorLine = { underline = true, fg= "none", bg= "none" },
       },
+      everforest = {
+        BufferCurrentError = { link = "Normal" },
+        BufferCurrentWarn = { link = "Normal" },
+        BufferCurrentADDED = { link = "Normal" },
+        BufferCurrentCHANGED = { link = "Normal" },
+        BufferCurrentDELETED = { link = "Normal" },
+      },
       astrotheme = { -- a table of overrides/changes when applying the astrotheme theme
         -- Normal = { bg = "#000000" },
       },
