@@ -656,4 +656,9 @@ return {
     "sainnhe/everforest",
     lazy = false,
   },
+
+  {
+    "ojroques/nvim-osc52",
+    lazy = false,
+  },
 }
