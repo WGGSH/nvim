@@ -18,11 +18,11 @@ return {
     highlights = {
       init = { -- this table overrides highlights in all themes
         -- Normal = { bg = "#000000" },
-        ConflictMarkerBegin = { bg = "#4a8277" },
-        ConflictMarkerOurs = { bg = "#4a8277" },
-        ConflictMarkerTheirs = { bg = "#4085c2" },
-        ConflictMarkerEnd = { bg = "#4085c2" },
-        ConflictMarkerSeparator = { bg = "none" },
+        -- ConflictMarkerBegin = { bg = "#4a8277" },
+        -- ConflictMarkerOurs = { bg = "#4a8277" },
+        -- ConflictMarkerTheirs = { bg = "#4085c2" },
+        -- ConflictMarkerEnd = { bg = "#4085c2" },
+        -- ConflictMarkerSeparator = { bg = "none" },
         CursorLine = { underline = true, fg= "none", bg= "none" },
       },
       everforest = {

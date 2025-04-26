@@ -73,16 +73,20 @@ return {
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
       i = {
-        ["<C-H>"] = {
-          function()
-            return vim.fn['copilot#Accept']("\n")
-          end,
-          desc = "Copilot accept suggestion",
-          expr = true,
-          silent = true,
-          script = true,
-          replace_keycodes = false,
-        },
+        -- ["<C-H>"] = {
+        --   -- function()
+        --   --   return vim.fn['copilot#Accept']("\n")
+        --   -- end,
+        --   function()
+        --     require('avante').accept_suggestion()
+        --   end,
+        --   -- desc = "Copilot accept suggestion",
+        --   desc = "Avante: Copilot accept suggestion",
+        --   expr = true,
+        --   silent = true,
+        --   script = true,
+        --   replace_keycodes = false,
+        -- },
       },
       -- first key is the mode
       n = {

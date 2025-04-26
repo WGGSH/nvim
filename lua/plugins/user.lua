@@ -107,10 +107,10 @@ return {
     ft = { "markdown" },
   },
 
-  {
-    "github/copilot.vim",
-    lazy = false,
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  -- },
 
   {
     "https://github.com/tomtom/tcomment_vim",
@@ -578,25 +578,25 @@ return {
     end,
   },
 
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    -- branch = "canary",
-    dependencies = {
-      -- { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "github/copilot.vim" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-      window = {
-        layout = "float",
-        border = "rounded",
-      },
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   -- branch = "canary",
+  --   dependencies = {
+  --     -- { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+  --     { "github/copilot.vim" }, -- or github/copilot.vim
+  --     { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+  --   },
+  --   build = "make tiktoken", -- Only on MacOS or Linux
+  --   opts = {
+  --     debug = true, -- Enable debugging
+  --     -- See Configuration section for rest
+  --     window = {
+  --       layout = "float",
+  --       border = "rounded",
+  --     },
+  --   },
+  --   -- See Commands section for default commands if you want to lazy load on them
+  -- },
 
   {
     "karb94/neoscroll.nvim",
@@ -684,10 +684,10 @@ return {
       auto_suggestions_provider = "copilot",
       behaviour = {
         auto_suggestions = true,
-        auto_set_highlight_group = true,
         auto_set_keymaps = false,
         auto_apply_diff_after_generation = true,
         support_paste_from_clipboard = true,
+        enable_cursor_planning_mode = true,
       },
       windows = {
         position = "right",
@@ -711,14 +711,25 @@ return {
       },
       copilot = {
         -- model = "gpt-4o-2024-05-13",
-        -- model = "gpt-4o-mini",
-        model = "claude-3.5-sonnet",
+        model = "gpt-4o-mini",
+        -- model = "claude-3.5-sonnet",
         max_tokens = 4096,
       },
       openai = {
         model = "gpt-4o", -- $2.5/$10
         -- model = "gpt-4o-mini", -- $0.15/$0.60
         max_tokens = 4096,
+      },
+      mappings = {
+        suggestion = {
+          accept = "<C-h>",
+        }
+      },
+      windows = {
+        position = "bottom",
+        ask = {
+          floating = true,
+        }
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
