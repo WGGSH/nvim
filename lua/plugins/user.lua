@@ -690,7 +690,7 @@ return {
       -- provider = "openai",
       auto_suggestions_provider = "copilot",
       behaviour = {
-        auto_suggestions = false, -- "github/copilot.vim", を使う
+        auto_suggestions = false, -- "copilot.lua", を使う
         auto_set_keymaps = false,
         auto_apply_diff_after_generation = true,
         support_paste_from_clipboard = true,
@@ -727,15 +727,15 @@ return {
         -- model = "gpt-4o-mini", -- $0.15/$0.60
         max_tokens = 4096,
       },
-      mappings = {
-        suggestion = {
-          accept = "<C-h>",
-        }
-      },
+      -- mappings = {
+      --   suggestion = {
+      --     accept = "<C-h>",
+      --   }
+      -- },
       windows = {
         position = "bottom",
         ask = {
-          floating = true,
+          floating = false,
         }
       },
     },
