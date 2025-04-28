@@ -107,48 +107,13 @@ return {
     ft = { "markdown" },
   },
 
-  -- {
-  --   "github/copilot.vim",
-  --   lazy = false,
-  -- },
-
   {
     "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
     config = function()
       require("copilot").setup({
-        suggestion = { enabled = false },  -- cmp統合時は無効化
-        panel = { enabled = false },       -- cmp統合時は無効化
-      })
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
-    config = function()
-      local cmp = require("cmp")
-      cmp.setup({
-        sources = cmp.config.sources({
-          { name = "copilot" },         -- Copilotを補完ソースに追加
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-          { name = "path" },
-          -- 必要に応じて他のソースも
-        }),
-        -- 他のcmp設定
-        mapping = {
-          ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ['<C-h>'] = cmp.mapping.confirm({ select = true }),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-          ['<C-e>'] = cmp.mapping.close(),
+        suggestion = {
+          auto_trigger = true,
+          keymap = { accept = "<C-h>" },
         },
       })
     end,
@@ -624,8 +589,8 @@ return {
   --   "CopilotC-Nvim/CopilotChat.nvim",
   --   -- branch = "canary",
   --   dependencies = {
-  --     -- { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-  --     { "github/copilot.vim" }, -- or github/copilot.vim
+  --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+  --     -- { "github/copilot.vim" }, -- or github/copilot.vim
   --     { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
   --   },
   --   build = "make tiktoken", -- Only on MacOS or Linux
