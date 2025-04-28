@@ -74,14 +74,10 @@ return {
     mappings = {
       i = {
         -- ["<C-H>"] = {
-        --   -- function()
-        --   --   return vim.fn['copilot#Accept']("\n")
-        --   -- end,
         --   function()
-        --     require('avante').accept_suggestion()
+        --     return vim.fn['copilot#Accept']("\n")
         --   end,
-        --   -- desc = "Copilot accept suggestion",
-        --   desc = "Avante: Copilot accept suggestion",
+        --   desc = "Copilot accept suggestion",
         --   expr = true,
         --   silent = true,
         --   script = true,

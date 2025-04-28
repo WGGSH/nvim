@@ -113,6 +113,48 @@ return {
   -- },
 
   {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },  -- cmp統合時は無効化
+        panel = { enabled = false },       -- cmp統合時は無効化
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    event = { "InsertEnter", "CmdlineEnter" },
+    config = function()
+      local cmp = require("cmp")
+      cmp.setup({
+        sources = cmp.config.sources({
+          { name = "copilot" },         -- Copilotを補完ソースに追加
+          { name = "nvim_lsp" },
+          { name = "buffer" },
+          { name = "path" },
+          -- 必要に応じて他のソースも
+        }),
+        -- 他のcmp設定
+        mapping = {
+          ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ['<C-h>'] = cmp.mapping.confirm({ select = true }),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-e>'] = cmp.mapping.close(),
+        },
+      })
+    end,
+  },
+
+  {
     "https://github.com/tomtom/tcomment_vim",
     lazy = false,
   },
@@ -683,7 +725,7 @@ return {
       -- provider = "openai",
       auto_suggestions_provider = "copilot",
       behaviour = {
-        auto_suggestions = true,
+        auto_suggestions = false, -- "github/copilot.vim", を使う
         auto_set_keymaps = false,
         auto_apply_diff_after_generation = true,
         support_paste_from_clipboard = true,
