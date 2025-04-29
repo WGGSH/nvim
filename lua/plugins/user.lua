@@ -740,7 +740,7 @@ return {
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    -- build = "make",
+    build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -749,6 +749,7 @@ return {
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
       "nvim-tree/nvim-web-devicons",
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "zbirenbaum/copilot.lua",  -- for providers='copilot'
       {
         -- support for image pasting
@@ -775,6 +776,9 @@ return {
         },
         ft = { "markdown", "Avante" },
       },
+    },
+    file_selector = {
+      provider = "fzf",
     },
   }
 }
