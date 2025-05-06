@@ -702,7 +702,7 @@ return {
         auto_set_keymaps = false,
         auto_apply_diff_after_generation = true,
         support_paste_from_clipboard = true,
-        enable_cursor_planning_mode = true,
+        enable_cursor_planning_mode = false,
       },
       windows = {
         position = "bottom",
