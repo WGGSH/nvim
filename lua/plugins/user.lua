@@ -98,10 +98,11 @@ return {
   {
     "https://github.com/ntpeters/vim-better-whitespace",
     lazy = false,
+    event = "FileType",
     config = function()
       vim.g.better_whitespace_filetypes_blacklist = { "help", "markdown", "text", "snacks_dashboard" }
       vim.g.strip_whitespace_on_save = 0
-      vim.g.better_whitespace_guicolor = "#FF0000"
+      vim.g.better_whitespace_guicolor = "#E95678"
     end,
   },
 
@@ -570,27 +571,27 @@ return {
     end,
   },
 
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   lazy = false,
-  --   config = function()
-  --     require("notify").setup({
-  --       stages = "slide",
-  --       timeout = 1500,
-  --       level = 1,
-  --       background_colour = "NotifyWarnIcon",
-  --       -- background_colour = "#000000",
-  --       -- icons = {
-  --       --   ERROR = "",
-  --       --   WARN = "",
-  --       --   INFO = "",
-  --       --   DEBUG = "",
-  --       --   TRACE = "✎"
-  --       -- },
-  --       top_down = false, -- これを false にすると右下になります。
-  --     })
-  --   end,
-  -- },
+  {
+    "rcarriga/nvim-notify",
+    lazy = false,
+    config = function()
+      require("notify").setup({
+        stages = "fade_in_slide_out",
+        timeout = 500,
+        level = 1,
+        background_colour = "#000000",
+        -- icons = {
+        --   ERROR = "",
+        --   WARN = "",
+        --   INFO = "",
+        --   DEBUG = "",
+        --   TRACE = "✎"
+        -- },
+        top_down = false, -- これを false にすると右下になります。
+        render = "default",
+      })
+    end,
+  },
 
   -- {
   --   "CopilotC-Nvim/CopilotChat.nvim",
@@ -704,11 +705,11 @@ return {
         enable_cursor_planning_mode = true,
       },
       windows = {
-        position = "right",
+        position = "bottom",
         width = 30,
         sidebar_header = {
           align = "center",
-          rounded = false,
+          rounded = true,
         },
         ask = {
           floating = true,
@@ -739,12 +740,6 @@ return {
       --     accept = "<C-h>",
       --   }
       -- },
-      windows = {
-        position = "bottom",
-        ask = {
-          floating = false,
-        }
-      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
