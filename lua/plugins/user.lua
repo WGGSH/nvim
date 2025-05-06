@@ -1,9 +1,8 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
+-- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
 -- Here are some examples:
-
-local monokai_pro_pallete;
 
 ---@type LazySpec
 return {
@@ -19,26 +18,28 @@ return {
 
   -- == Examples of Overriding Plugins ==
 
-  -- customize alpha options
+  -- customize dashboard options
   {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
-      return opts
-    end,
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = table.concat({
+            -- " █████  ███████ ████████ ██████   ██████ ",
+            -- "██   ██ ██         ██    ██   ██ ██    ██",
+            -- "███████ ███████    ██    ██████  ██    ██",
+            -- "██   ██      ██    ██    ██   ██ ██    ██",
+            -- "██   ██ ███████    ██    ██   ██  ██████ ",
+            -- "",
+            -- "███    ██ ██    ██ ██ ███    ███",
+            -- "████   ██ ██    ██ ██ ████  ████",
+            -- "██ ██  ██ ██    ██ ██ ██ ████ ██",
+            -- "██  ██ ██  ██  ██  ██ ██  ██  ██",
+            -- "██   ████   ████   ██ ██      ██",
+          }, "\n"),
+        },
+      },
+    },
   },
 
   -- You can disable default plugins as follows:
@@ -97,6 +98,12 @@ return {
   {
     "https://github.com/ntpeters/vim-better-whitespace",
     lazy = false,
+    event = "FileType",
+    config = function()
+      vim.g.better_whitespace_filetypes_blacklist = { "help", "markdown", "text", "snacks_dashboard" }
+      vim.g.strip_whitespace_on_save = 0
+      vim.g.better_whitespace_guicolor = "#E95678"
+    end,
   },
 
   {
@@ -134,45 +141,45 @@ return {
     lazy = false,
   },
 
-  {
-    "stevearc/aerial.nvim",
-    lazy = false,
-    config = function()
-      require("aerial").setup({
-        show_guides = true,
-        keymaps = {
-          ["h"] = false
-        },
-        filter_kind = {
-          -- "Class",
-          "Constructor",
-          "Enum",
-          "Function",
-          "Interface",
-          "Method",
-          "Module",
-          "Struct",
-          "Type",
-          "Field",
-          "Component",
-          "Variable",
-        },
-        backends = {
-          ["_"] = { "treesitter", "lsp" },
-          vue = { "treesitter", "lsp" },
-        },
-        show_symbol_details = true;
-        -- icons = {
-        --   group = {
-        --     ["class"] = " ",
-        --     ["function"] = " ",
-        --     ["method"] = " ",
-        --     ["variable"] = " ",
-        --   },
-        -- },
-      })
-    end
-  },
+  -- {
+  --   "stevearc/aerial.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("aerial").setup({
+  --       show_guides = true,
+  --       keymaps = {
+  --         ["h"] = false
+  --       },
+  --       filter_kind = {
+  --         -- "Class",
+  --         "Constructor",
+  --         "Enum",
+  --         "Function",
+  --         "Interface",
+  --         "Method",
+  --         "Module",
+  --         "Struct",
+  --         "Type",
+  --         "Field",
+  --         "Component",
+  --         "Variable",
+  --       },
+  --       backends = {
+  --         ["_"] = { "treesitter", "lsp" },
+  --         vue = { "treesitter", "lsp" },
+  --       },
+  --       show_symbol_details = true;
+  --       -- icons = {
+  --       --   group = {
+  --       --     ["class"] = " ",
+  --       --     ["function"] = " ",
+  --       --     ["method"] = " ",
+  --       --     ["variable"] = " ",
+  --       --   },
+  --       -- },
+  --     })
+  --   end
+  -- },
 
   {
     "thinca/vim-partedit",
@@ -220,6 +227,7 @@ return {
     lazy = false,
   },
 
+  -- v5 移行に伴い一旦削除
   {
     "romgrk/barbar.nvim",
     config = function()
@@ -568,11 +576,10 @@ return {
     lazy = false,
     config = function()
       require("notify").setup({
-        stages = "slide",
-        timeout = 1500,
+        stages = "fade_in_slide_out",
+        timeout = 500,
         level = 1,
-        background_colour = "NotifyWarnIcon",
-        -- background_colour = "#000000",
+        background_colour = "#000000",
         -- icons = {
         --   ERROR = "",
         --   WARN = "",
@@ -581,6 +588,7 @@ return {
         --   TRACE = "✎"
         -- },
         top_down = false, -- これを false にすると右下になります。
+        render = "default",
       })
     end,
   },
@@ -697,11 +705,11 @@ return {
         enable_cursor_planning_mode = true,
       },
       windows = {
-        position = "right",
+        position = "bottom",
         width = 30,
         sidebar_header = {
           align = "center",
-          rounded = false,
+          rounded = true,
         },
         ask = {
           floating = true,
@@ -732,12 +740,6 @@ return {
       --     accept = "<C-h>",
       --   }
       -- },
-      windows = {
-        position = "bottom",
-        ask = {
-          floating = false,
-        }
-      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
