@@ -1,4 +1,4 @@
-if true then return end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- This will run last in the setup process and is a good place to configure
 -- things like custom filetypes. This just pure lua so anything that doesn't
@@ -74,3 +74,9 @@ end
 vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
 vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
 vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+
+-- astrocore.lua に書くとうまく動かなかったので移動
+vim.schedule(function()
+  vim.keymap.set('n', '<Leader>h', function() require('astrocore.buffer').nav(-vim.v.count1) end, { desc = "Previous buffer" })
+  vim.keymap.set('n', '<Leader>t', function() require('astrocore.buffer').nav(vim.v.count1) end, { desc = "Next buffer" })
+end)
