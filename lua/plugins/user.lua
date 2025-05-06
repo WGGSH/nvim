@@ -228,33 +228,33 @@ return {
   },
 
   -- v5 移行に伴い一旦削除
-  {
-    "romgrk/barbar.nvim",
-    config = function()
-      require("barbar").setup {
-        maximum_padding = 1,
-        maximum_length = 5,
-        icons = {
-          buffer_index = true,
-          gitsigns = {
-            added = { enabled = true, icon = "+" },
-            changed = { enabled = true, icon = "~" },
-            deleted = { enabled = true, icon = "-" },
-          },
-          diagnostics = {
-            [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
-            [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
-            [vim.diagnostic.severity.INFO] = { enabled = true },
-            [vim.diagnostic.severity.HINT] = { enabled = true },
-          },
-          -- preset = 'powerline',
-          -- separator = { left = '', right = '' },
-          separator_at_end = false,
-        },
-      }
-    end,
-    lazy = false,
-  },
+  -- {
+  --   "romgrk/barbar.nvim",
+  --   config = function()
+  --     require("barbar").setup {
+  --       maximum_padding = 1,
+  --       maximum_length = 5,
+  --       icons = {
+  --         buffer_index = true,
+  --         gitsigns = {
+  --           added = { enabled = true, icon = "+" },
+  --           changed = { enabled = true, icon = "~" },
+  --           deleted = { enabled = true, icon = "-" },
+  --         },
+  --         diagnostics = {
+  --           [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
+  --           [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
+  --           [vim.diagnostic.severity.INFO] = { enabled = true },
+  --           [vim.diagnostic.severity.HINT] = { enabled = true },
+  --         },
+  --         -- preset = 'powerline',
+  --         -- separator = { left = '', right = '' },
+  --         separator_at_end = false,
+  --       },
+  --     }
+  --   end,
+  --   lazy = false,
+  -- },
 
   -- {
   --   "akinsho/bufferline.nvim",
