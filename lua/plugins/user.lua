@@ -726,8 +726,8 @@ return {
       },
       copilot = {
         -- model = "gpt-4o-2024-05-13",
-        model = "gpt-4o-mini",
-        -- model = "claude-3.5-sonnet",
+        -- model = "gpt-4o-mini",
+        model = "claude-3.5-sonnet",
         max_tokens = 4096,
       },
       openai = {
