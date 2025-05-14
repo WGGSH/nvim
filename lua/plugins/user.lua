@@ -782,5 +782,28 @@ return {
     file_selector = {
       provider = "fzf",
     },
+  },
+
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+
+      -- see below for full list of optional dependencies 👇
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "obsidian",
+          path = "~/workspace/git_repos/obsidian",
+        },
+      },
+
+      -- see below for full list of options 👇
+    },
   }
 }
