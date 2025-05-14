@@ -750,6 +750,7 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "nvim-tree/nvim-web-devicons",
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "zbirenbaum/copilot.lua",  -- for providers='copilot'
@@ -785,13 +786,14 @@ return {
   },
 
   {
+    -- required `rg` command
     "epwalsh/obsidian.nvim",
     version = "*",
     lazy = true,
     ft = "markdown",
     dependencies = {
       -- Required.
-      "nvim-lua/plenary.nvim",
+      -- "nvim-lua/plenary.nvim",
 
       -- see below for full list of optional dependencies 👇
     },
@@ -804,6 +806,22 @@ return {
       },
 
       -- see below for full list of options 👇
+      disable_frontmatter = true,
+      mappings = {
+        ["gf"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        ["<cr>"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        -- 必要なら他のマッピングもここで定義
+      },
     },
   }
 }
