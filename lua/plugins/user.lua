@@ -619,38 +619,38 @@ return {
     config = function() require("neoscroll").setup {} end,
   },
 
-  {
-    "shellRaining/hlchunk.nvim",
-    lazy = false,
-    config = function()
-      require("hlchunk").setup {
-        chunk = {
-          enable = true,
-          use_treesitter = true,
-
-          chars = {
-            horizontal_line = "─",
-            vertical_line = "│",
-            left_top = "┌",
-            left_bottom = "└",
-            right_arrow = "→",
-          },
-          -- style = "#00ffff",
-          -- style = monokai_pro_pallete.dimmed1,
-          duration = 0,
-          delay = 0,
-        },
-        indent = {
-          enable = true,
-          use_treesitter = true,
-        },
-        line_num = {
-          enable = true,
-          use_treesitter = true,
-        },
-      }
-    end,
-  },
+  -- {
+  --   "shellRaining/hlchunk.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("hlchunk").setup {
+  --       chunk = {
+  --         enable = true,
+  --         use_treesitter = true,
+  --
+  --         chars = {
+  --           horizontal_line = "─",
+  --           vertical_line = "│",
+  --           left_top = "┌",
+  --           left_bottom = "└",
+  --           right_arrow = "→",
+  --         },
+  --         -- style = "#00ffff",
+  --         -- style = monokai_pro_pallete.dimmed1,
+  --         duration = 0,
+  --         delay = 0,
+  --       },
+  --       indent = {
+  --         enable = true,
+  --         use_treesitter = true,
+  --       },
+  --       line_num = {
+  --         enable = true,
+  --         use_treesitter = true,
+  --       },
+  --     }
+  --   end,
+  -- },
 
   {
     "dstein64/nvim-scrollview",
