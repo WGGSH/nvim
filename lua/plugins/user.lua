@@ -432,7 +432,7 @@ return {
     config = function()
       require("catppuccin").setup {
         flavour = "macchiato",
-        transparent_background = true,
+        transparent_background = false,
         integrations = {
           barbar = false,
           illuminate = {
@@ -441,15 +441,25 @@ return {
           },
         },
         color_overrides = {
+          -- macchiato = {
+          --   base = "#222426",
+          --   red = "#E95678",
+          --   -- green = "#A6E22E",
+          --   yellow = "#E6DB74",
+          --   -- blue = "#66D9EF",
+          --   purple = "#AE81FF",
+          --   cyan = "#A1EFE4",
+          --   white = "#F8F8F2",
+          -- },
           macchiato = {
-            base = "#222426",
-            red = "#E95678",
-            -- green = "#A6E22E",
-            yellow = "#E6DB74",
-            -- blue = "#66D9EF",
-            purple = "#AE81FF",
-            cyan = "#A1EFE4",
-            white = "#F8F8F2",
+            base = "#172233",
+            red = "#f27d8c",
+            green = "#b3e699",
+            yellow = "#f4d07e",
+            blue = "#8aadf4",
+            purple = "#cba3ff",
+            cyan = "#84c2f2",
+            white = "#f1f4fb",
           },
         },
       }

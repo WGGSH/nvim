@@ -13,7 +13,8 @@ return {
       ensure_installed = {
         -- install language servers
         "lua-language-server",
-        "vue-language-server", -- old: "volar",
+        "vue-language-server@1.8.27", -- old: "volar",
+        "typescript",
         "eslint-lsp", -- old: "eslint",
         "stylelint-lsp", -- old: "stylelint_lsp",
         -- "tsserver",
@@ -22,6 +23,7 @@ return {
         "json-lsp", -- old: "jsonls",
         "perlnavigator",
         "clangd",
+        "omnisharp",
 
         -- install formatters
         "stylua",
