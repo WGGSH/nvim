@@ -805,6 +805,14 @@ return {
   },
 
   {
+    "coder/claudecode.nvim",
+    lazy = false,
+    config = function()
+      require("claudecode").setup()
+    end,
+  },
+
+  {
     -- required `rg` command
     "epwalsh/obsidian.nvim",
     version = "*",
