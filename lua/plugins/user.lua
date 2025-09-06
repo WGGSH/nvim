@@ -40,6 +40,28 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("snacks").setup(opts)
+
+      -- snacks dashboard用の特別な設定
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "SnacksDashboardOpened",
+        callback = function()
+          vim.b.better_whitespace_enabled = 0
+          vim.cmd("silent! syntax clear ExtraWhitespace")
+          vim.cmd("silent! match none")
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "snacks_dashboard",
+        callback = function()
+          vim.b.better_whitespace_enabled = 0
+          vim.cmd("silent! syntax clear ExtraWhitespace")
+          vim.cmd("silent! match none")
+        end,
+      })
+    end,
   },
 
   -- You can disable default plugins as follows:
@@ -100,9 +122,55 @@ return {
     lazy = false,
     event = "FileType",
     config = function()
-      vim.g.better_whitespace_filetypes_blacklist = { "help", "markdown", "text", "snacks_dashboard" }
+      vim.g.better_whitespace_filetypes_blacklist = {
+        "help",
+        "markdown",
+        "text",
+        "snacks_dashboard",
+        "dashboard",
+        "alpha",
+        "startify"
+      }
       vim.g.strip_whitespace_on_save = 0
       vim.g.better_whitespace_guicolor = "#E95678"
+      
+      -- VimEnter後に初期バッファをチェック
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          -- 起動時のバッファがダッシュボードの場合
+          vim.schedule(function()
+            if vim.bo.filetype == "" and vim.api.nvim_buf_get_name(0) == "" then
+              vim.b.better_whitespace_enabled = 0
+              vim.cmd("silent! syntax clear ExtraWhitespace")
+              vim.cmd("silent! match none")
+              -- ハイライトグループ自体を無効化
+              vim.cmd("silent! highlight clear ExtraWhitespace")
+            end
+          end)
+        end,
+      })
+      
+      -- より確実なsnacks dashboard対策
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "FileType" }, {
+        callback = function()
+          local bufname = vim.api.nvim_buf_get_name(0)
+          local buftype = vim.bo.buftype
+          local filetype = vim.bo.filetype
+          
+          -- snacks dashboardを検出する複数の条件
+          if (bufname == "" and filetype == "") or 
+             (buftype == "nofile") or
+             (filetype == "snacks_dashboard") or
+             (bufname and bufname:match("snacks_dashboard")) then
+            -- バッファレベルでvim-better-whitespaceを無効化
+            vim.b.better_whitespace_enabled = 0
+            -- 既存のハイライトをクリア
+            vim.cmd("silent! syntax clear ExtraWhitespace")
+            vim.cmd("silent! match none")
+            vim.cmd("silent! highlight clear ExtraWhitespace")
+          end
+        end,
+      })
     end,
   },
 
