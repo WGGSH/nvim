@@ -462,13 +462,15 @@ return {
           -- },
           macchiato = {
             base = "#172233",
-            red = "#f27d8c",
+            -- red = "#f27d8c",
+            red = "#ff6b7d",
             green = "#b3e699",
-            yellow = "#f4d07e",
+            -- yellow = "#f4d07e",
+            yellow = "#ffcd3c",
             blue = "#8aadf4",
             purple = "#cba3ff",
             cyan = "#84c2f2",
-            white = "#f1f4fb",
+            white = "#c8d4f4",
           },
         },
       }
