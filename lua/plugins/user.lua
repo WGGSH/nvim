@@ -1,9 +1,8 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
+-- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
 -- Here are some examples:
-
-local monokai_pro_pallete;
 
 ---@type LazySpec
 return {
@@ -19,26 +18,28 @@ return {
 
   -- == Examples of Overriding Plugins ==
 
-  -- customize alpha options
+  -- customize dashboard options
   {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
-      return opts
-    end,
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = table.concat({
+            -- " █████  ███████ ████████ ██████   ██████ ",
+            -- "██   ██ ██         ██    ██   ██ ██    ██",
+            -- "███████ ███████    ██    ██████  ██    ██",
+            -- "██   ██      ██    ██    ██   ██ ██    ██",
+            -- "██   ██ ███████    ██    ██   ██  ██████ ",
+            -- "",
+            -- "███    ██ ██    ██ ██ ███    ███",
+            -- "████   ██ ██    ██ ██ ████  ████",
+            -- "██ ██  ██ ██    ██ ██ ██ ████ ██",
+            -- "██  ██ ██  ██  ██  ██ ██  ██  ██",
+            -- "██   ████   ████   ██ ██      ██",
+          }, "\n"),
+        },
+      },
+    },
   },
 
   -- You can disable default plugins as follows:
@@ -97,6 +98,21 @@ return {
   {
     "https://github.com/ntpeters/vim-better-whitespace",
     lazy = false,
+    event = "FileType",
+    config = function()
+      vim.g.better_whitespace_filetypes_blacklist = {
+        "help",
+        "markdown",
+        "text",
+        "snacks_dashboard",
+        "dashboard",
+        "alpha",
+        "startify",
+        "" -- empty filetype for dashboard
+      }
+      vim.g.strip_whitespace_on_save = 0
+      vim.g.better_whitespace_guicolor = "#E95678"
+    end,
   },
 
   {
@@ -134,45 +150,45 @@ return {
     lazy = false,
   },
 
-  {
-    "stevearc/aerial.nvim",
-    lazy = false,
-    config = function()
-      require("aerial").setup({
-        show_guides = true,
-        keymaps = {
-          ["h"] = false
-        },
-        filter_kind = {
-          -- "Class",
-          "Constructor",
-          "Enum",
-          "Function",
-          "Interface",
-          "Method",
-          "Module",
-          "Struct",
-          "Type",
-          "Field",
-          "Component",
-          "Variable",
-        },
-        backends = {
-          ["_"] = { "treesitter", "lsp" },
-          vue = { "treesitter", "lsp" },
-        },
-        show_symbol_details = true;
-        -- icons = {
-        --   group = {
-        --     ["class"] = " ",
-        --     ["function"] = " ",
-        --     ["method"] = " ",
-        --     ["variable"] = " ",
-        --   },
-        -- },
-      })
-    end
-  },
+  -- {
+  --   "stevearc/aerial.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("aerial").setup({
+  --       show_guides = true,
+  --       keymaps = {
+  --         ["h"] = false
+  --       },
+  --       filter_kind = {
+  --         -- "Class",
+  --         "Constructor",
+  --         "Enum",
+  --         "Function",
+  --         "Interface",
+  --         "Method",
+  --         "Module",
+  --         "Struct",
+  --         "Type",
+  --         "Field",
+  --         "Component",
+  --         "Variable",
+  --       },
+  --       backends = {
+  --         ["_"] = { "treesitter", "lsp" },
+  --         vue = { "treesitter", "lsp" },
+  --       },
+  --       show_symbol_details = true;
+  --       -- icons = {
+  --       --   group = {
+  --       --     ["class"] = " ",
+  --       --     ["function"] = " ",
+  --       --     ["method"] = " ",
+  --       --     ["variable"] = " ",
+  --       --   },
+  --       -- },
+  --     })
+  --   end
+  -- },
 
   {
     "thinca/vim-partedit",
@@ -220,33 +236,34 @@ return {
     lazy = false,
   },
 
-  {
-    "romgrk/barbar.nvim",
-    config = function()
-      require("barbar").setup {
-        maximum_padding = 1,
-        maximum_length = 5,
-        icons = {
-          buffer_index = true,
-          gitsigns = {
-            added = { enabled = true, icon = "+" },
-            changed = { enabled = true, icon = "~" },
-            deleted = { enabled = true, icon = "-" },
-          },
-          diagnostics = {
-            [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
-            [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
-            [vim.diagnostic.severity.INFO] = { enabled = true },
-            [vim.diagnostic.severity.HINT] = { enabled = true },
-          },
-          -- preset = 'powerline',
-          -- separator = { left = '', right = '' },
-          separator_at_end = false,
-        },
-      }
-    end,
-    lazy = false,
-  },
+  -- v5 移行に伴い一旦削除
+  -- {
+  --   "romgrk/barbar.nvim",
+  --   config = function()
+  --     require("barbar").setup {
+  --       maximum_padding = 1,
+  --       maximum_length = 5,
+  --       icons = {
+  --         buffer_index = true,
+  --         gitsigns = {
+  --           added = { enabled = true, icon = "+" },
+  --           changed = { enabled = true, icon = "~" },
+  --           deleted = { enabled = true, icon = "-" },
+  --         },
+  --         diagnostics = {
+  --           [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
+  --           [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
+  --           [vim.diagnostic.severity.INFO] = { enabled = true },
+  --           [vim.diagnostic.severity.HINT] = { enabled = true },
+  --         },
+  --         -- preset = 'powerline',
+  --         -- separator = { left = '', right = '' },
+  --         separator_at_end = false,
+  --       },
+  --     }
+  --   end,
+  --   lazy = false,
+  -- },
 
   -- {
   --   "akinsho/bufferline.nvim",
@@ -424,7 +441,7 @@ return {
     config = function()
       require("catppuccin").setup {
         flavour = "macchiato",
-        transparent_background = true,
+        transparent_background = false,
         integrations = {
           barbar = false,
           illuminate = {
@@ -433,15 +450,27 @@ return {
           },
         },
         color_overrides = {
+          -- macchiato = {
+          --   base = "#222426",
+          --   red = "#E95678",
+          --   -- green = "#A6E22E",
+          --   yellow = "#E6DB74",
+          --   -- blue = "#66D9EF",
+          --   purple = "#AE81FF",
+          --   cyan = "#A1EFE4",
+          --   white = "#F8F8F2",
+          -- },
           macchiato = {
-            base = "#222426",
-            red = "#E95678",
-            -- green = "#A6E22E",
-            yellow = "#E6DB74",
-            -- blue = "#66D9EF",
-            purple = "#AE81FF",
-            cyan = "#A1EFE4",
-            white = "#F8F8F2",
+            base = "#172233",
+            -- red = "#f27d8c",
+            red = "#ff6b7d",
+            green = "#b3e699",
+            -- yellow = "#f4d07e",
+            yellow = "#ffcd3c",
+            blue = "#8aadf4",
+            purple = "#cba3ff",
+            cyan = "#84c2f2",
+            white = "#c8d4f4",
           },
         },
       }
@@ -568,11 +597,10 @@ return {
     lazy = false,
     config = function()
       require("notify").setup({
-        stages = "slide",
-        timeout = 1500,
+        stages = "fade_in_slide_out",
+        timeout = 500,
         level = 1,
-        background_colour = "NotifyWarnIcon",
-        -- background_colour = "#000000",
+        background_colour = "#000000",
         -- icons = {
         --   ERROR = "",
         --   WARN = "",
@@ -581,6 +609,7 @@ return {
         --   TRACE = "✎"
         -- },
         top_down = false, -- これを false にすると右下になります。
+        render = "default",
       })
     end,
   },
@@ -611,38 +640,38 @@ return {
     config = function() require("neoscroll").setup {} end,
   },
 
-  {
-    "shellRaining/hlchunk.nvim",
-    lazy = false,
-    config = function()
-      require("hlchunk").setup {
-        chunk = {
-          enable = true,
-          use_treesitter = true,
-
-          chars = {
-            horizontal_line = "─",
-            vertical_line = "│",
-            left_top = "┌",
-            left_bottom = "└",
-            right_arrow = "→",
-          },
-          -- style = "#00ffff",
-          -- style = monokai_pro_pallete.dimmed1,
-          duration = 0,
-          delay = 0,
-        },
-        indent = {
-          enable = true,
-          use_treesitter = true,
-        },
-        line_num = {
-          enable = true,
-          use_treesitter = true,
-        },
-      }
-    end,
-  },
+  -- {
+  --   "shellRaining/hlchunk.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("hlchunk").setup {
+  --       chunk = {
+  --         enable = true,
+  --         use_treesitter = true,
+  --
+  --         chars = {
+  --           horizontal_line = "─",
+  --           vertical_line = "│",
+  --           left_top = "┌",
+  --           left_bottom = "└",
+  --           right_arrow = "→",
+  --         },
+  --         -- style = "#00ffff",
+  --         -- style = monokai_pro_pallete.dimmed1,
+  --         duration = 0,
+  --         delay = 0,
+  --       },
+  --       indent = {
+  --         enable = true,
+  --         use_treesitter = true,
+  --       },
+  --       line_num = {
+  --         enable = true,
+  --         use_treesitter = true,
+  --       },
+  --     }
+  --   end,
+  -- },
 
   {
     "dstein64/nvim-scrollview",
@@ -694,14 +723,14 @@ return {
         auto_set_keymaps = false,
         auto_apply_diff_after_generation = true,
         support_paste_from_clipboard = true,
-        enable_cursor_planning_mode = true,
+        enable_cursor_planning_mode = false,
       },
       windows = {
-        position = "right",
+        position = "bottom",
         width = 30,
         sidebar_header = {
           align = "center",
-          rounded = false,
+          rounded = true,
         },
         ask = {
           floating = true,
@@ -718,8 +747,8 @@ return {
       },
       copilot = {
         -- model = "gpt-4o-2024-05-13",
-        model = "gpt-4o-mini",
-        -- model = "claude-3.5-sonnet",
+        -- model = "gpt-4o-mini",
+        model = "claude-3.5-sonnet",
         max_tokens = 4096,
       },
       openai = {
@@ -732,12 +761,6 @@ return {
       --     accept = "<C-h>",
       --   }
       -- },
-      windows = {
-        position = "bottom",
-        ask = {
-          floating = false,
-        }
-      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -748,6 +771,7 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "nvim-tree/nvim-web-devicons",
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "zbirenbaum/copilot.lua",  -- for providers='copilot'
@@ -780,5 +804,61 @@ return {
     file_selector = {
       provider = "fzf",
     },
-  }
+  },
+
+  {
+    "coder/claudecode.nvim",
+    lazy = false,
+    config = function()
+      require("claudecode").setup()
+    end,
+  },
+
+  {
+    -- required `rg` command
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      -- Required.
+      -- "nvim-lua/plenary.nvim",
+
+      -- see below for full list of optional dependencies 👇
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "obsidian",
+          path = "~/workspace/git_repos/obsidian",
+        },
+      },
+
+      -- see below for full list of options 👇
+      disable_frontmatter = true,
+      mappings = {
+        ["gf"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        ["<cr>"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        -- 必要なら他のマッピングもここで定義
+      },
+      completion = {
+        -- Set to false to disable completion.
+        nvim_cmp = true,
+        -- Trigger completion at 2 chars.
+        min_chars = 2,
+      },
+    },
+  },
+
+
 }

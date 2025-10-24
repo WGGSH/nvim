@@ -32,27 +32,15 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- FIXME: 後で plugins 以下に移動したい
-local lspconfig = require('lspconfig')
-local mason_registry = require('mason-registry')
-
--- Vue Language Serverのパスを取得
-local vue_ls_path = mason_registry.get_package('vue-language-server'):get_install_path()
-local vue_typescript_plugin_path = vue_ls_path .. '/node_modules/@vue/language-server'
-
--- ts_lsの設定
-lspconfig.ts_ls.setup({
+require('lspconfig').volar.setup({
   init_options = {
-    plugins = {
-      {
-        name = '@vue/typescript-plugin',
-        location = vue_typescript_plugin_path,
-        languages = {'vue'}
-      }
+    typescript = {
+      tsdk = vim.fn.expand(
+        '~/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib'
+      )
     }
-  },
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue'},
+  }
 })
-
 
 neoscroll = require('neoscroll')
 local keymap = {
@@ -74,3 +62,9 @@ end
 vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
 vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
 vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+
+-- astrocore.lua に書くとうまく動かなかったので移動
+vim.schedule(function()
+  vim.keymap.set('n', '<Leader>h', function() require('astrocore.buffer').nav(-vim.v.count1) end, { desc = "Previous buffer" })
+  vim.keymap.set('n', '<Leader>t', function() require('astrocore.buffer').nav(vim.v.count1) end, { desc = "Next buffer" })
+end)
